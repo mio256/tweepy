@@ -6,7 +6,7 @@ import urllib.request
 import os
 
 LIMIT_DUPLICATION = 10
-SAVE_LOCATION = "/home/skyadmin/tweepy/savepic/"
+SAVE_LOCATION = "/home/skyadmin/tweepy/savepic/"  # edit here
 DELETE_URL = "http://pbs.twimg.com/media/"
 
 # twpic

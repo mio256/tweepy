@@ -6,7 +6,7 @@ import urllib.request
 import os
 
 LIMIT_DUPLICATION = 10
-SAVE_LOCATION = "C:\\python\\workspace_python_1\\savepic\\"
+SAVE_LOCATION = "C:\\python\\workspace_python_1\\savepic\\"  # edit here
 DELETE_URL = "http://pbs.twimg.com/media/"
 
 # twpic
@@ -40,7 +40,8 @@ def save_pic():
             print('-' * 60)
             print(friend_id.name)
             key_account = friend_id.screen_name
-            friend_timeline_range = tweepy.Cursor(api.user_timeline, screen_name=key_account).items(search_limit)
+            friend_timeline_range = tweepy.Cursor(
+                api.user_timeline, screen_name=key_account).items(search_limit)
             cnt_pic = 0
             cnt_duplication = 0
             for friend_timeline in friend_timeline_range:
@@ -54,7 +55,8 @@ def save_pic():
                             cnt_pic += 1
                             friend_name = friend_timeline.user.screen_name
                             img_url = friend_timeline.extended_entities['media'][0]['media_url']
-                            dst_path = SAVE_LOCATION + friend_name + "_" + img_url.replace(DELETE_URL, "")
+                            dst_path = SAVE_LOCATION + friend_name + \
+                                "_" + img_url.replace(DELETE_URL, "")
                             send_string(os.path.abspath(dst_path))
                             if not os.path.exists(dst_path):
                                 download_file(img_url, dst_path)
